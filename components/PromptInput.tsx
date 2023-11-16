@@ -18,16 +18,28 @@ function PromptInput() {
 
   const loading = isLoading || isValidating;
 
-  async function submitPrompt() {
-    const prompt = input.trim();
-    if (!prompt) return;
+  const submitPrompt = async (useSuggestion?: boolean) => {
+    const inputPrompt = input;
+    setInput("");
 
-    alert("your prompt was " + prompt);
-  }
+    // p is the logic for which prompt to send to the API
+    const p = useSuggestion ? suggestion : inputPrompt;
+
+    const res = await fetch("/api/generateImage", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ prompt: p }),
+    });
+
+    const data = await res.json();
+
+    console.log(data);
+  };
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
     await submitPrompt();
   };
 
@@ -61,6 +73,7 @@ function PromptInput() {
         <button
           type="button"
           className="p-4 bg-violet-400 text-white transition-colors duration-200 font-bold disabled:text-gray-300 disabled:cursor-not-allowed disabled:bg-gray-400"
+          onClick={() => submitPrompt(true)}
         >
           Use Suggestion
         </button>
