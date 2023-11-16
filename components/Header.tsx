@@ -3,7 +3,7 @@ import Link from "next/link";
 
 function Header() {
   return (
-    <header className="flex justify-between sticky p-5 top-0 bg-gray-100 z-50 shadow-md">
+    <header className="flex justify-between sticky p-5 top-0 bg-gray-100 z-50 shadow-md shadow-gray-400/50">
       <div className="flex space-x-2 items-center">
         <Image
           src="https://links.papareact.com/4t3"
@@ -18,9 +18,9 @@ function Header() {
             <span className="text-violet-500"> IMG</span>
             enerator
           </h1>
-          <h2 className="text-xs">
+          {/* <h2 className="text-xs">
             Powered by DALL·E 2, ChatGPT & Microsoft Azure!
-          </h2>
+          </h2> */}
         </div>
       </div>
 
