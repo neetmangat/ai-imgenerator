@@ -1,6 +1,5 @@
 export async function GET(request: Request) {
   const production = process.env.ENVIRONMENT === "production";
-  console.log("production", production);
 
   // Connect to our Microsoft Azure Function endpoint
   const response = await fetch(

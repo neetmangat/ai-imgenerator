@@ -34,7 +34,7 @@ function PromptInput() {
   return (
     <div className="m-10">
       <form
-        className="flex flex-col lg:flex-row shadow-md shadow-slate-400/10 border border-white rounded-md lg:divide-x"
+        className="flex flex-col lg:flex-row shadow-md shadow-slate-400/30 border border-white rounded-md lg:divide-x"
         onSubmit={handleSubmit}
       >
         <textarea
