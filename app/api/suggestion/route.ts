@@ -1,4 +1,5 @@
 export async function GET(request: Request) {
+  const endpoint = request.url;
   const production = process.env.ENVIRONMENT === "production";
 
   const fetchURL = production
