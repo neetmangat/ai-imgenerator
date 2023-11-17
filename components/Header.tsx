@@ -14,13 +14,12 @@ function Header() {
 
         <div className="">
           <h1 className="font-bold">
-            The
-            <span className="text-violet-500"> IMG</span>
+            <span className="text-violet-500"> AI IMG</span>
             enerator
           </h1>
-          {/* <h2 className="text-xs">
+          <h2 className="text-xs">
             Powered by DALL·E 2, ChatGPT & Microsoft Azure!
-          </h2> */}
+          </h2>
         </div>
       </div>
 
