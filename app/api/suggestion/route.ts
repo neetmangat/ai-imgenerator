@@ -3,7 +3,10 @@ export async function GET(request: Request) {
 
   // Connect to our Microsoft Azure Function endpoint
   const response = await fetch(
-    production ? "" : "http://localhost:7071/api/getChatGPTSuggestion",
+    production
+      ? `${process.env.PRODUCTION_URL}/getChatGPTSuggestion`
+      : `${process.env.DEV_URL}/getChatGPTSuggestion`,
+    // : "http://localhost:7071/api/getChatGPTSuggestion",
     {
       cache: "no-store",
     }

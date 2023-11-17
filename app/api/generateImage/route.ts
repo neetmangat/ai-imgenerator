@@ -7,13 +7,18 @@ export async function POST(request: Request) {
   const production = process.env.ENVIRONMENT === "production";
 
   // Connect to our Microsoft Azure Function endpoint
-  const response = await fetch("http://localhost:7071/api/generateImage", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ prompt }),
-  });
+  const response = await fetch(
+    production
+      ? `${process.env.PRODUCTION_URL}/generateImage`
+      : `${process.env.DEV_URL}/generateImage`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ prompt }),
+    }
+  );
 
   const textData = await response.text();
 
