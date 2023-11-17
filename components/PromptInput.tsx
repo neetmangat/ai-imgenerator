@@ -17,7 +17,7 @@ function PromptInput() {
     revalidateOnFocus: false,
   });
 
-  const { mutate: updateImages } = useSWR("images", fetchImages, {
+  const { mutate: updateImages } = useSWR("/api/getImages", fetchImages, {
     revalidateOnFocus: false,
   });
 

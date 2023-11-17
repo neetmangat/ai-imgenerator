@@ -15,8 +15,15 @@ function Images() {
     isLoading,
     mutate: refreshImages,
     isValidating,
-  } = useSWR("images", fetchImages, {
+  } = useSWR("/api/getImages", fetchImages, {
     revalidateOnFocus: false,
+  });
+
+  // const { isLoading: isGenerating } = useSWR("/api/generateImage");
+
+  const loadingImages = new Array(12).fill({
+    name: "loading",
+    url: "/images/loading.jpg",
   });
 
   return (
@@ -33,13 +40,25 @@ function Images() {
           Loading <span className="text-violet-400">AI</span> Generated
           Images...
         </p>
+        // <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 px-0 md:px-10">
+        //   {loadingImages.map((image: ImageType, index: number) => (
+        //     <div
+        //       key={index}
+        //       className={`relative animate-pulse bg-gray-200  ${
+        //         index === 0 && "md:col-span-2 md:row-span-2"
+        //       }  duration-100 ease-in-out`}
+        //     >
+        //       <div className="w-[400px] h-[320px] rounded-sm  -z-10" />
+        //     </div>
+        //   ))}
+        // </div>
       )}
 
       <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 px-0 md:px-10">
         {images?.imageUrls?.map((image: ImageType, index: number) => (
           <div
             key={image.name}
-            className={`relative cursor-help  ${
+            className={`relative bg-gray-200 cursor-help  ${
               index === 0 && "md:col-span-2 md:row-span-2"
             } hover:scale-[103%] transition-transform duration-200 ease-in-out`}
           >
