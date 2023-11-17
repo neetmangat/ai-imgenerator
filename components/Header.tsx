@@ -17,7 +17,7 @@ function Header() {
             <span className="text-violet-500"> AI IMG</span>
             enerator
           </h1>
-          <h2 className="text-xs">
+          <h2 className="hidden md:inline-block text-xs">
             Powered by DALL·E 2, ChatGPT & Microsoft Azure!
           </h2>
         </div>
@@ -31,7 +31,7 @@ function Header() {
           href={"https://github.com/neetmangat/ai-image-generator"}
           className="px-2 font-light"
         >
-          GitHub Repo
+          GitHub <span className="hidden md:inline-block"> Repo</span>
         </Link>
       </div>
     </header>

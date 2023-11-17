@@ -75,7 +75,7 @@ function PromptInput() {
         <textarea
           value={input}
           onChange={(e) => setInput(e.target.value)}
-          className="flex-1 p-4 outline-none resize-none"
+          className="flex-1 p-4 pb-12 md:pb-4 outline-none resize-none"
           placeholder={
             (loading && "ChatGPT is thinking of a suggestion...") ||
             suggestion ||
