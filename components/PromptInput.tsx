@@ -4,6 +4,7 @@ import fetchImages from "@/lib/fetchImages";
 import fetchSuggestionFromChatGPT from "@/lib/fetchSuggestionFromChatGPT";
 import { FormEvent, MouseEvent, useState } from "react";
 import useSWR from "swr";
+import toast from "react-hot-toast";
 
 function PromptInput() {
   const [input, setInput] = useState("");
@@ -30,6 +31,13 @@ function PromptInput() {
     // p is the logic for which prompt to send to the API
     const p = useSuggestion ? suggestion : inputPrompt;
 
+    // send out toast notification
+    const notificationPrompt = p;
+    const notificationPromptShort = notificationPrompt.slice(0, 20);
+    const notification = toast.loading(
+      `IMGenerator is creating: ${notificationPromptShort}...`
+    );
+
     const res = await fetch("/api/generateImage", {
       method: "POST",
       headers: {
@@ -39,6 +47,16 @@ function PromptInput() {
     });
 
     const data = await res.json();
+
+    if (data.error) {
+      toast.error(data.error, {
+        id: notification,
+      });
+    } else {
+      toast.success("Image created!", {
+        id: notification,
+      });
+    }
 
     updateImages();
   };
